@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rashid & Co — Multi‑User (Firebase)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>Rashid & Co — Multi‑User</header>
+
+<!-- Auth -->
+<div id="authBox" class="container">
+  <h2>لاگ اِن / سائن اَپ</h2>
+  <div class="row">
+    <input type="email" id="email" placeholder="ای میل" />
+    <input type="password" id="password" placeholder="پاس ورڈ" />
+  </div>
+  <div class="row">
+    <button class="btn" id="btnLogin">لاگ اِن</button>
+    <button class="btn gray" id="btnSignup">سائن اَپ</button>
+  </div>
+  <div class="muted" style="margin-top:6px">
+    Admin email کو <b>app.js</b> میں <code>ADMIN_EMAIL</code> پر سیٹ کریں (مثلاً <code>admin@rashid.com</code>)
+  </div>
+</div>
+
+<!-- App -->
+<div id="appBox" class="container hidden">
+  <div class="row" style="justify-content:space-between;margin-bottom:8px">
+    <div>
+      <span id="whoami" class="badge"></span>
+      <span id="roleBadge" class="badge"></span>
+    </div>
+    <div>
+      <button class="btn red" id="btnLogout">لاگ آؤٹ</button>
+    </div>
+  </div>
+
+  <div id="adminPanel" class="hidden">
+    <h2>ایڈمن پینل — تمام ملازمین</h2>
+    <div class="row" style="margin-bottom:10px">
+      <input type="text" id="newName" placeholder="نام" />
+      <input type="number" id="newSalary" placeholder="گراس سیلری" />
+      <input type="email" id="newEmail" placeholder="ای میل (employee)" />
+      <div class="muted">* سائن اَپ پر ملازم خود بنائے، آپ یہاں ریکارڈ لنک کریں (email -> uid mapping)</div>
+    </div>
+    <div class="row">
+      <button class="btn green" id="btnLinkEmployee">🔗 Link Email → Employee</button>
+      <button class="btn gray" id="btnRefresh">↻ Refresh</button>
+    </div>
+    <div id="allEmployees"></div>
+  </div>
+
+  <div id="selfPanel">
+    <h2>میرا پروفائل</h2>
+    <div class="row" style="margin-bottom:10px">
+      <input type="text" id="myName" placeholder="نام" />
+      <input type="number" id="mySalary" placeholder="گراس سیلری" />
+      <button class="btn green" id="btnSaveProfile">Save</button>
+    </div>
+
+    <h2>حاضری</h2>
+    <div class="row" style="margin-bottom:10px">
+      <label style="display:inline-flex;gap:6px;align-items:center">
+        <input type="checkbox" id="chkToday" />
+        <span>آج حاضر</span>
+      </label>
+      <input type="date" id="attDate" />
+      <select id="attStatus">
+        <option value="">اسٹیٹس منتخب کریں</option>
+        <option value="P">Present</option>
+        <option value="A">Absent</option>
+        <option value="L">Leave</option>
+      </select>
+      <button class="btn" id="btnSaveManualAtt">Save Manual</button>
+    </div>
+    <div class="muted" id="attMonthCounts"></div>
+
+    <h2>خرچے</h2>
+    <div class="row" style="margin-bottom:10px">
+      <input type="number" id="expAmt" placeholder="Amount" />
+      <input type="text" id="expNote" placeholder="Note" />
+      <button class="btn" id="btnAddExp">➕ Add</button>
+    </div>
+    <div id="expList"></div>
+
+    <h2>ماہانہ خلاصہ</h2>
+    <div id="monthSummary"></div>
+  </div>
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
