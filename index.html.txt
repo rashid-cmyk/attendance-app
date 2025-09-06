@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rashid & Co — Attendance & Expenses</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>Rashid & Co</header>
+
+<!-- Login -->
+<div id="login" class="container">
+  <h2>لاگ اِن</h2>
+  <div class="row">
+    <input type="password" id="loginPass" placeholder="پاس ورڈ درج کریں" />
+    <button class="btn" onclick="doLogin()">لاگ اِن</button>
+  </div>
+  <div class="muted" style="margin-top:6px">
+    پہلی بار ڈیفالٹ پاس ورڈ: <b>1234</b> — بعد میں تبدیل کر سکتے ہیں۔
+  </div>
+</div>
+
+<!-- App -->
+<div id="app" class="container hidden">
+  <h2>ملازمین</h2>
+  <div class="row" style="margin-bottom:10px">
+    <input type="text" id="empName" placeholder="نام" />
+    <input type="number" id="empSalary" placeholder="گراس سیلری" />
+    <button class="btn" onclick="addEmployee()">➕ نیا ملازم</button>
+    <span class="muted">(گراس سیلری ماہانہ ہے)</span>
+  </div>
+
+  <div id="empList"></div>
+
+  <h2>ماہانہ خلاصہ</h2>
+  <div id="monthSummary"></div>
+
+  <h2>بیک اپ / پاس ورڈ</h2>
+  <div class="row">
+    <button class="btn gray" onclick="saveData()">💾 Save Data</button>
+    <input type="file" id="fileLoad" onchange="loadData(event)" />
+    <button class="btn gray" onclick="changePassword()">🔑 Change Password</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
